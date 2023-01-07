@@ -1,7 +1,6 @@
 <?php
 
 function build(string $pharName, string $folderPath, string $path4Require) {
-    $timestarted = microtime(true);
     try {
         $bootstrap = explode("/", $path4Require);
         $bootstrap = $bootstrap[count($bootstrap)-1];
@@ -18,7 +17,6 @@ function build(string $pharName, string $folderPath, string $path4Require) {
         $count = count($phar->buildFromIterator($iterator, $folderPath));
         
         $phar->stopBuffering();
-        $timetooked = round(microtime(true) - $timestarted, 3) ." Seconds";
     } catch(Exception $e) {
         echo $e->getMessage();
     }
